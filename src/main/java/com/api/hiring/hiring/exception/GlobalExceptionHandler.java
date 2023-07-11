@@ -32,4 +32,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Candidato já participa do processo", HttpStatus.FORBIDDEN);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(NotFoundException e) {
+        return new ResponseEntity<>("Candidato não encontrado", HttpStatus.NOT_FOUND);
+    }
+
 }
