@@ -21,6 +21,14 @@ public class CandidateController {
     @Autowired
     CandidateService service;
 
+    @GetMapping("/status/candidate/{id}")
+    public ResponseEntity<Map<String, String>> getStatus(@PathVariable Long id) {
+        Candidate candidate = service.getStatus(id);
+        Map<String, String> response = Collections.singletonMap("status", candidate.getStatus());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @PostMapping("/start")
     public ResponseEntity<Map<String, Long>> startProcess(@RequestBody @Valid CandidateDTO candidate) {
         Candidate newCandidate = new Candidate(candidate.nome(), "Recebido");
@@ -43,6 +51,14 @@ public class CandidateController {
     public ResponseEntity disqualifyCandidate(@RequestBody @Valid CandidateIdDTO candidateId) {
 
         service.disqualifyCandidate(candidateId.codCandidato());
+
+        return new ResponseEntity<> (HttpStatus.OK);
+    }
+
+    @PostMapping("/approve")
+    public ResponseEntity approveCandidate(@RequestBody @Valid CandidateIdDTO candidateId) {
+
+        service.approveCandidate(candidateId.codCandidato());
 
         return new ResponseEntity<> (HttpStatus.OK);
     }

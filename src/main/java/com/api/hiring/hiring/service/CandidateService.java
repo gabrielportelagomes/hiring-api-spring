@@ -12,6 +12,14 @@ public class CandidateService {
     @Autowired
     CandidateRepository repository;
 
+    public Candidate getStatus(Long id) {
+        Candidate candidate = repository.findById(id).orElseThrow(() -> {
+            throw new NotFoundException("Candidato não encontrado");
+        });
+
+        return  candidate;
+    }
+
     public Candidate startProcess(Candidate candidate) {
 
         return repository.save(candidate);
@@ -36,5 +44,18 @@ public class CandidateService {
         });
 
         repository.delete(candidate);
+    }
+
+    public void approveCandidate(Long id) {
+        Candidate candidate = repository.findById(id).orElseThrow(() -> {
+            throw new NotFoundException("Candidato não encontrado");
+        });
+
+        if(!candidate.getStatus().equals("Qualificado")) {
+            throw new NotFoundException("Candidato não encontrado");
+        }
+
+        candidate.setStatus("Aprovado");
+        repository.save(candidate);
     }
 }
