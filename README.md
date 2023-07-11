@@ -89,7 +89,7 @@ Retorna uma lista de candidatos, no seguinte formato:
   ]
 ```
 
-## Como executar os testes unitário
+## Como executar os testes unitários
 
 1. Realize os passos do guia de Instalação
 2. Execute os testes com o Maven
