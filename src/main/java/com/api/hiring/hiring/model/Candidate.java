@@ -17,15 +17,15 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is mandatory")
+    @NotBlank(message = "Nome é obrigatório")
     @Column(unique = true)
-    String name;
+    String nome;
 
-    @NotBlank(message = "Status is mandatory")
+    @NotBlank(message = "Status é obrigatório")
     String status;
 
-    public Candidate(String name, String status) {
-        this.name = name;
+    public Candidate(String nome, String status) {
+        this.nome = nome;
         this.status = status;
     }
 }

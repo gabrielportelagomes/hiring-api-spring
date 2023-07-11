@@ -22,7 +22,7 @@ public class CandidateController {
 
     @PostMapping("/start")
     public ResponseEntity<Map<String, Long>> startProcess(@RequestBody @Valid CandidateDTO candidate) {
-        Candidate newCandidate = new Candidate(candidate.name(), "Recebido");
+        Candidate newCandidate = new Candidate(candidate.nome(), "Recebido");
 
         Candidate candidateAdded = service.startProcess(newCandidate);
 
