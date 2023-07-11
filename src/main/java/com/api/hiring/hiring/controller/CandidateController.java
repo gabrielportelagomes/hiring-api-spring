@@ -47,4 +47,12 @@ public class CandidateController {
         return new ResponseEntity<> (HttpStatus.OK);
     }
 
+    @PostMapping("/approve")
+    public ResponseEntity approveCandidate(@RequestBody @Valid CandidateIdDTO candidateId) {
+
+        service.approveCandidate(candidateId.codCandidato());
+
+        return new ResponseEntity<> (HttpStatus.OK);
+    }
+
 }
