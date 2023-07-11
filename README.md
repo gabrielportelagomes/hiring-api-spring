@@ -8,7 +8,8 @@ API que gerencia as etapas de um processo seletivo, densenvolvida durante bootca
 - Java 17;
 - Spring Boot 3.1.1;
 - MySQL;
-- Maven.
+- Maven;
+- JUnit;
 
 
 ## Instalação
@@ -87,3 +88,9 @@ Retorna uma lista de candidatos, no seguinte formato:
 	  }
   ]
 ```
+
+## Como executar os testes unitário
+
+1. Realize os passos do guia de Instalação
+2. Execute os testes com o Maven
+
