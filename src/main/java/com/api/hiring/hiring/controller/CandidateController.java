@@ -1,6 +1,7 @@
 package com.api.hiring.hiring.controller;
 
 import com.api.hiring.hiring.dto.CandidateDTO;
+import com.api.hiring.hiring.dto.CandidateIdDTO;
 import com.api.hiring.hiring.model.Candidate;
 import com.api.hiring.hiring.service.CandidateService;
 import jakarta.validation.Valid;
@@ -28,6 +29,14 @@ public class CandidateController {
 
         Map<String, Long> response = Collections.singletonMap("codCandidato", candidateAdded.getId());
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/schedule")
+    public ResponseEntity scheduleInterview(@RequestBody @Valid CandidateIdDTO candidateId) {
+
+        service.scheduleInterview(candidateId.codCandidato());
+
+        return new ResponseEntity<> (HttpStatus.OK);
     }
 
 }
