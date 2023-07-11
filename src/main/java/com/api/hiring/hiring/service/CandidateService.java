@@ -22,6 +22,10 @@ public class CandidateService {
             throw new NotFoundException("Candidato não encontrado");
         });
 
+        if(!candidate.getStatus().equals("Recebido")) {
+            throw new NotFoundException("Candidato não encontrado");
+        }
+
         candidate.setStatus("Qualificado");
         repository.save(candidate);
     }
