@@ -6,6 +6,8 @@ import com.api.hiring.hiring.repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CandidateService {
 
@@ -18,6 +20,12 @@ public class CandidateService {
         });
 
         return  candidate;
+    }
+
+    public List<Candidate> findApproved() {
+        List candidates = repository.findByStatus("Aprovado");
+
+        return candidates;
     }
 
     public Candidate startProcess(Candidate candidate) {

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,6 +28,13 @@ public class CandidateController {
         Map<String, String> response = Collections.singletonMap("status", candidate.getStatus());
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/approved")
+    public  ResponseEntity<List<Candidate>> findApproved() {
+        List candidates = service.findApproved();
+
+        return new ResponseEntity<>(candidates, HttpStatus.OK);
     }
 
     @PostMapping("/start")
