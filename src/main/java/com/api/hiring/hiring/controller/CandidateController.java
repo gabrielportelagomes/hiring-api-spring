@@ -39,4 +39,12 @@ public class CandidateController {
         return new ResponseEntity<> (HttpStatus.OK);
     }
 
+    @PostMapping("/disqualify")
+    public ResponseEntity disqualifyCandidate(@RequestBody @Valid CandidateIdDTO candidateId) {
+
+        service.disqualifyCandidate(candidateId.codCandidato());
+
+        return new ResponseEntity<> (HttpStatus.OK);
+    }
+
 }

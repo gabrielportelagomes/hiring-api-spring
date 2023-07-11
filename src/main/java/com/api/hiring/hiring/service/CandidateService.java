@@ -17,12 +17,20 @@ public class CandidateService {
         return repository.save(candidate);
     }
 
-    public void scheduleInterview(Long codCandidato) {
-        Candidate candidate = repository.findById(codCandidato).orElseThrow(() -> {
+    public void scheduleInterview(Long id) {
+        Candidate candidate = repository.findById(id).orElseThrow(() -> {
             throw new NotFoundException("Candidato não encontrado");
         });
 
         candidate.setStatus("Qualificado");
         repository.save(candidate);
+    }
+
+    public void disqualifyCandidate(Long id) {
+        Candidate candidate = repository.findById(id).orElseThrow(() -> {
+            throw new NotFoundException("Candidato não encontrado");
+        });
+
+        repository.delete(candidate);
     }
 }
