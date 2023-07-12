@@ -94,3 +94,6 @@ Retorna uma lista de candidatos, no seguinte formato:
 1. Realize os passos do guia de Instalação
 2. Execute os testes com o Maven
 
+## Repositório do front
+- [hiring-front](https://github.com/gabrielportelagomes/hiring-front)
+
